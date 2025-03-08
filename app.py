@@ -2,6 +2,8 @@
 from pathlib import Path
 import PIL
 import cv2
+import av
+from streamlit_webrtc import webrtc_streamer, VideoProcessorBase, WebRtcMode, RTCConfiguration
 
 # External packages
 import streamlit as st
@@ -15,7 +17,7 @@ st.set_page_config(
 )
 
 # Main page heading
-st.title("Object Detection using YOLOv8")
+st.title("Waste Detection using YOLOv8")
 
 # Sidebar
 st.sidebar.header("ML Model Config")
@@ -72,6 +74,7 @@ if source_radio == "Image":
             except Exception as ex:
                 st.write("No objects detected.")
 
+# Sidebar for webcam option
 elif source_radio == "Webcam":
     st.sidebar.warning("Press 'q' to close the webcam.")
 
